@@ -32,5 +32,9 @@ class PtestStack(cdk.Stack):
                     'pip install -r requirements.txt',
                     'cdk synth'
                 ]))
-        p.add_stage(EcsClusterStage(self, 'PreProd',
-                               env=cdk.Environment(account="989957622819", region="us-east-2")))
+        stg_preprod = p.add_stage(EcsClusterStage(self, 'PreProd',
+                                                  env=cdk.Environment(account="989957622819", region="us-east-2"),
+                                                  ))
+        
+        stg_prod = p.add_stage(EcsClusterStage(self, 'Production',
+                                               env=cdk.Environment(account="989957622819", region="us-east-2")))
