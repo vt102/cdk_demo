@@ -18,8 +18,8 @@ class EcsClusterStack(cdk.Stack):
         vpc = ec2.Vpc.from_lookup(self, 'scratch2Vpc', vpc_id='vpc-092967d64650b476c')
 
         fg_task = ecs_patterns.ApplicationLoadBalancedTaskImageOptions(
-            image=ecs.ContainerImage.from_registry("amazon/amazon-ecs-sample:latest"))
-            # image=ecs.ContainerImage.from_registry("nginx:latest"))
+            # image=ecs.ContainerImage.from_registry("amazon/amazon-ecs-sample:latest"))
+            image=ecs.ContainerImage.from_registry("nginx:latest"))
             # image=ecs.ContainerImage.from_registry("httpd:latest"))
         service = ecs_patterns.ApplicationLoadBalancedFargateService(
             self, f'PtestEcsCluster{v}',
