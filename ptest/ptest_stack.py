@@ -34,7 +34,7 @@ class PtestStack(cdk.Stack):
                 ]))
         stg_preprod = p.add_stage(EcsClusterStage(self, 'PreProd',
                                                   env=cdk.Environment(account="989957622819", region="us-east-2")),
-                                  post=[pipelines.ManualApprovalStep('PreProp Acceptance')]
+                                  post=[pipelines.ManualApprovalStep('PreProd Acceptance')]
                                   )
         
         stg_prod = p.add_stage(EcsClusterStage(self, 'Production',
