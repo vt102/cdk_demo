@@ -32,9 +32,10 @@ class PtestStack(cdk.Stack):
                     'pip install -r requirements.txt',
                     'cdk synth'
                 ]))
-        stg_preprod = p.add_stage(EcsClusterStage(self, 'PreProd',
-                                                  env=cdk.Environment(account="989957622819", region="us-east-2"),
-                                                  ))
+        stg_preprod = p.add_stage(EcsClusterStage(
+            self, 'PreProd',
+            env=cdk.Environment(account="989957622819", region="us-east-2"),
+            post=pipelines.ManualApprovalStep('PreProp Acceptance')))
         
         stg_prod = p.add_stage(EcsClusterStage(self, 'Production',
                                                env=cdk.Environment(account="989957622819", region="us-east-2")))
